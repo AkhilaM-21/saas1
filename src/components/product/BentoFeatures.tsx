@@ -1,4 +1,4 @@
-import React from 'react';
+
 import { useLanguage } from '../../LanguageContext';
 import { Package, MonitorSmartphone, ShoppingCart, BarChart3, Bell, ScanLine, Users, FileText } from 'lucide-react';
 

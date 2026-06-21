@@ -1,8 +1,8 @@
 import { motion } from 'framer-motion';
 import { 
-  Users, Megaphone, Globe, LayoutDashboard, 
-  HeadphonesIcon, Calculator, FileText, Briefcase, 
-  Inbox, Calendar, Shield, Server, ArrowRight
+  Users, Megaphone, LayoutDashboard, 
+  HeadphonesIcon, Calculator, Briefcase, 
+  Inbox, Shield
 } from 'lucide-react';
 
 const products = [

@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useLanguage } from '../LanguageContext';
-import { ShoppingCart, CheckCircle2 } from 'lucide-react';
+import { ShoppingCart } from 'lucide-react';
 
 import PosHero from '../components/product/PosHero';
 import StatsCounter from '../components/product/StatsCounter';

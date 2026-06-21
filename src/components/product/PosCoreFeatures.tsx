@@ -1,6 +1,6 @@
-import React from 'react';
+
 import { useLanguage } from '../../LanguageContext';
-import { Package, Building2, Users, CreditCard, ShoppingCart, Zap, Smartphone, Store } from 'lucide-react';
+import { Package, Building2, Users, CreditCard, Zap, Smartphone, Store } from 'lucide-react';
 
 export default function PosCoreFeatures() {
   const { language } = useLanguage();

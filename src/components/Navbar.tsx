@@ -125,9 +125,6 @@ export default function Navbar() {
     return features[pIndex];
   };
 
-  const handleMouseLeave = () => {
-    setActiveMenu(null);
-  };
 
   return (
     <div className={`${isProductPage ? 'absolute' : 'fixed'} top-0 left-0 right-0 w-full bg-white z-50 shadow-sm border-b border-gray-100`}>
@@ -307,7 +304,7 @@ export default function Navbar() {
           <div className="flex flex-col space-y-6">
             {/* Nav Links */}
             <div className="flex flex-col space-y-4">
-              {navLinks.map((item, idx) => (
+              {navLinks.map((item) => (
                 <div key={item} className="flex flex-col">
                   {item === 'Products' || item === 'المنتجات' ? (
                     <>

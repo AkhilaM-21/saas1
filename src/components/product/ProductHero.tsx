@@ -1,6 +1,4 @@
-import React from 'react';
 import { useLanguage } from '../../LanguageContext';
-import { ArrowRight, CheckCircle2 } from 'lucide-react';
 
 export default function ProductHero() {
   const { language } = useLanguage();

@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useState, useEffect } from 'react';
 import { useLanguage } from '../LanguageContext';
 import { ShoppingCart } from 'lucide-react';
 
@@ -13,7 +12,7 @@ import PosFaq from '../components/product/PosFaq';
 export default function ProductDetail() {
   const { language } = useLanguage();
   const isArabic = language === 'Arabic';
-  const { productId } = useParams();
+
 
   const [isScrolled, setIsScrolled] = useState(false);
 

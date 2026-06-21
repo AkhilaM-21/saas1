@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useLanguage } from '../../LanguageContext';
 import { ChevronDown, ChevronUp } from 'lucide-react';
 
@@ -64,7 +64,7 @@ export default function PosFaq() {
   const activeFaqs = isArabic ? arabicFaqs : faqs;
 
   return (
-    <section className="pt-12 pb-12 lg:pb-24 bg-white relative border-t border-gray-100">
+    <section className="pt-12 pb-64 md:pb-72 bg-white relative border-t border-gray-100">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         <div className="text-center mb-16">

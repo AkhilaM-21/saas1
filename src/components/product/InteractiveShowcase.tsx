@@ -1,6 +1,6 @@
-import React from 'react';
+
 import { useLanguage } from '../../LanguageContext';
-import { CheckCircle2, ArrowRight, LayoutDashboard, Package, TrendingUp, ShoppingCart, ArrowLeftRight, Users, UserSquare, FileText, Settings, Search, Settings2, Bell, Building2, RefreshCw } from 'lucide-react';
+import { CheckCircle2, ArrowRight, LayoutDashboard, Package, TrendingUp, ShoppingCart, ArrowLeftRight, Users, FileText, Settings, Search, Settings2, Bell, Building2 } from 'lucide-react';
 
 export default function InteractiveShowcase() {
   const { language } = useLanguage();

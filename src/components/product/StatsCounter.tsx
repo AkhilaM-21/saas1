@@ -1,4 +1,4 @@
-import React from 'react';
+
 import { useLanguage } from '../../LanguageContext';
 import { Zap, ShoppingBag, PackageOpen, RefreshCw } from 'lucide-react';
 
@@ -7,7 +7,7 @@ export default function StatsCounter() {
   const isArabic = language === 'Arabic';
 
   return (
-    <section className="py-12 lg:py-24 bg-navy relative border-y border-white/5 overflow-hidden">
+    <section className="py-8 bg-slate-50 relative z-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
          <div className="bg-white border border-gray-100 rounded-2xl shadow-sm flex flex-col md:flex-row justify-between items-center py-6 px-6 divide-y md:divide-y-0 md:divide-x divide-gray-100 gap-6 md:gap-0">
             

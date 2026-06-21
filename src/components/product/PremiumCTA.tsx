@@ -1,4 +1,4 @@
-import React from 'react';
+
 import { useLanguage } from '../../LanguageContext';
 import { ArrowRight, CheckCircle2, Star, Calendar, ShieldCheck, XCircle, Headphones } from 'lucide-react';
 

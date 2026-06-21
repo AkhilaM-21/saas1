@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useLanguage } from '../../LanguageContext';
 import { PackageOpen, RefreshCw, ShoppingCart, TrendingUp } from 'lucide-react';
 
