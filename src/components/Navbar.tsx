@@ -1,13 +1,21 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useLanguage } from '../LanguageContext';
 import { MapPin, Globe, Cloud, Users, PieChart, Calculator, Hexagon, Command, ArrowRight, X, Building2, ShieldCheck, ShoppingCart, Activity, Briefcase, Rocket, Menu, ChevronDown } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 export default function Navbar() {
   const { language, setLanguage, dir } = useLanguage();
   const [region, setRegion] = useState('India');
   const location = useLocation();
   const isProductPage = location.pathname.startsWith('/products/');
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 24);
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
   
   const [isRegionOpen, setIsRegionOpen] = useState(false);
   const [isLangOpen, setIsLangOpen] = useState(false);
@@ -127,16 +135,26 @@ export default function Navbar() {
 
 
   return (
-    <div className={`${isProductPage ? 'absolute' : 'fixed'} top-0 left-0 right-0 w-full bg-white z-50 shadow-sm border-b border-gray-100`}>
+    <div
+      className={`${isProductPage ? 'absolute' : 'fixed'} top-0 left-0 right-0 w-full z-50 border-b transition-all duration-500 ${
+        scrolled
+          ? 'bg-white/80 backdrop-blur-md shadow-[0_4px_24px_rgba(0,0,0,0.06)] border-gray-100/80'
+          : 'bg-white shadow-sm border-gray-100'
+      }`}
+    >
       <div className="w-full px-4 sm:px-6 lg:px-8">
         <nav className="flex items-center justify-between h-20 w-full relative">
           
           <div className="flex items-center gap-12 h-full">
             {/* Logo */}
             <Link to="/" className="flex items-center cursor-pointer gap-2 hover:opacity-90 transition-opacity">
-              <div className="flex items-center justify-center w-8 h-8 rounded-xl bg-gradient-to-tr from-primary to-primary-hover shadow-md">
+              <motion.div
+                animate={{ scale: scrolled ? 0.92 : 1 }}
+                transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+                className="flex items-center justify-center w-8 h-8 rounded-xl bg-gradient-to-tr from-primary to-primary-hover shadow-md"
+              >
                 <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
-              </div>
+              </motion.div>
               <span className="font-extrabold text-[22px] tracking-tight text-gray-900">emvive</span>
             </Link>
 

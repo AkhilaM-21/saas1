@@ -1,6 +1,8 @@
-
+import { motion } from 'framer-motion';
+import type { Variants } from 'framer-motion';
 import { useLanguage } from '../../LanguageContext';
 import { Package, Building2, Users, CreditCard, Zap, Smartphone, Store } from 'lucide-react';
+import { fadeUp, fadeUpSmall, stagger, viewportOnce, ease } from '../../utils/animations';
 
 export default function PosCoreFeatures() {
   const { language } = useLanguage();
@@ -30,34 +32,62 @@ export default function PosCoreFeatures() {
 
   const activeFeatures = isArabic ? arabicFeatures : features;
 
+  const cardDirections: Variants[] = [
+    { hidden: { opacity: 0, x: -40, y: 20 }, visible: { opacity: 1, x: 0, y: 0, transition: { duration: 0.8, ease } } },
+    { hidden: { opacity: 0, y: 50 }, visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease } } },
+    { hidden: { opacity: 0, x: 40, y: 20 }, visible: { opacity: 1, x: 0, y: 0, transition: { duration: 0.8, ease } } },
+    { hidden: { opacity: 0, y: 50 }, visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease } } },
+  ];
+
   return (
     <section className="pt-24 pb-24 bg-white relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
-        <div className="text-center mb-16">
-           <p className="text-primary text-xs font-bold uppercase tracking-widest mb-3">
-             {isArabic ? 'الميزات' : 'FEATURES'}
-           </p>
-           <h2 className="text-3xl md:text-4xl font-extrabold text-navy tracking-tight">
-             {isArabic ? 'كل ما تحتاجه لإدارة متجرك.' : 'Everything you need to run your store.'}
-           </h2>
-        </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-           {activeFeatures.map((feat, i) => (
-              <div key={i} className="bg-white border border-gray-100 rounded-2xl p-6 shadow-[0_4px_20px_rgba(0,0,0,0.03)] hover:shadow-lg transition-all hover:-translate-y-1 cursor-default group">
-                 <div className="flex flex-col gap-4">
-                    <div className="w-10 h-10 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center group-hover:scale-110 transition-transform">
-                       <feat.icon className="w-5 h-5 text-primary" />
-                    </div>
-                    <div>
-                       <h4 className="text-navy font-bold text-sm mb-1">{feat.title}</h4>
-                       <p className="text-slate-500 text-xs leading-relaxed">{feat.desc}</p>
-                    </div>
-                 </div>
+        <motion.div
+          variants={stagger}
+          initial="hidden"
+          whileInView="visible"
+          viewport={viewportOnce}
+          className="text-center mb-16"
+        >
+          <motion.p variants={fadeUpSmall} className="text-primary text-xs font-bold uppercase tracking-widest mb-3">
+            {isArabic ? 'الميزات' : 'FEATURES'}
+          </motion.p>
+          <motion.h2 variants={fadeUp} className="text-3xl md:text-4xl font-extrabold text-navy tracking-tight">
+            {isArabic ? 'كل ما تحتاجه لإدارة متجرك.' : 'Everything you need to run your store.'}
+          </motion.h2>
+        </motion.div>
+
+        <motion.div
+          variants={stagger}
+          initial="hidden"
+          whileInView="visible"
+          viewport={viewportOnce}
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4"
+        >
+          {activeFeatures.map((feat, i) => (
+            <motion.div
+              key={i}
+              variants={cardDirections[i % cardDirections.length]}
+              whileHover={{ y: -6, boxShadow: '0 16px 40px rgba(0,0,0,0.10)', scale: 1.01, transition: { duration: 0.22 } }}
+              className="bg-white border border-gray-100 rounded-2xl p-6 shadow-[0_4px_20px_rgba(0,0,0,0.03)] cursor-default group"
+            >
+              <div className="flex flex-col gap-4">
+                <motion.div
+                  whileHover={{ scale: 1.12 }}
+                  transition={{ duration: 0.2 }}
+                  className="w-10 h-10 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center"
+                >
+                  <feat.icon className="w-5 h-5 text-primary" />
+                </motion.div>
+                <div>
+                  <h4 className="text-navy font-bold text-sm mb-1">{feat.title}</h4>
+                  <p className="text-slate-500 text-xs leading-relaxed">{feat.desc}</p>
+                </div>
               </div>
-           ))}
-        </div>
+            </motion.div>
+          ))}
+        </motion.div>
 
       </div>
     </section>
